@@ -1,0 +1,271 @@
+/*
+Custom Css
+*/
+/*--------------CSS HIGHLIGHT PRODUCT---------*/
+.highlight .title{
+    font-weight: bold;
+    font-size: 1.7rem;
+}
+.highlight-product{
+    width: 17.7rem;
+    height: 33rem;
+}
+.content{
+    font-size: 10px;
+}
+/*--------------CSS RECENTLY PRODUCT---------*/
+.recently .title{
+    font-weight: bold;
+    font-size: 1.7rem;
+}
+.recently-product{
+    width: 14rem;
+    height: 18rem;
+}
+/*---------------CSS SAN PHAM GIAM GIA---------------*/
+
+.laptop{
+    margin: 4rem 7rem 4rem 7rem;
+}
+
+.laptop .title{
+    margin-left: -13px;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.laptop .container{
+    display: flex;
+    justify-content: space-between;
+}
+
+.laptop .container .col{
+    width: 13rem;
+    height: 26rem;
+    text-align: center;
+    border: 1px solid rgb(197, 197, 197);
+    margin-right: 0.55rem;
+}
+
+.laptop .container .col:hover{
+    cursor: pointer;
+    transition: 0.2s;
+    box-shadow: 0px 0px 15px 1px rgb(170, 170, 170);/*x-y-độ mờ- độ phóng rộng- màu   */
+}
+
+.laptop .container .col .laptop-img{
+    width: 12rem;
+}
+
+.laptop .container .col .info .laptop-name{
+    font-size: 15px;
+    font-weight: bold;
+    padding-top: 2rem;
+    text-overflow: ellipsis;
+    opacity: .7;
+}
+
+.laptop .container .col .info .detail{
+    margin-top: -0.5rem;
+    margin-bottom: 0.5rem;
+    font-size: 12px;
+}
+.laptop .container .col .info {
+    text-align: left ;
+}
+.laptop .container .col .info .detail span{
+    padding: 2px;
+    margin-right: 2px;
+    border: 1px solid black;
+    border-radius: 2px;
+}
+
+.laptop .container .col .info .root-price{
+    font-size: 15px;
+    opacity: .8;
+}
+
+.laptop .container .col .info .sale-price{
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: -1rem;
+}
+
+.laptop .container .col .info .gift{
+    font-size: 13px;
+    margin-top: -.8rem;
+    opacity: .8;
+}
+
+.laptop .container .col .info .rating{
+    display: flex;
+    align-items: center;
+    margin-top: -0.8rem;
+    margin-bottom: 1.5rem;
+}
+.laptop .container .col .info .rating .fa-star{
+    font-size: 12px;
+    color: orange;
+}
+
+.laptop .container .col .info .rating .vote{
+    padding-left: 5px;
+    padding-top: 5px;
+    font-size: 14px;
+}
+
+/*--------CSS SHOP PAGE-----------*/
+.categories .h2{
+    font-size: 25px;
+}
+
+.categories .h3{
+    font-size: 20px;
+}
+
+.list-inline-item .h3{
+    font-size: 18px;
+    padding-left: 10px;
+}
+
+.card-body .detail span{
+    font-size: 13px;
+    padding: 2px;
+    border: 1px solid black;
+}
+
+/*----------CSS SHOP-SINGLE----------*/
+.comment{
+    margin: 5rem 7rem 0rem 7rem;
+    padding-bottom: 5rem;
+    display: flex;
+}
+
+.comment .show-rating{
+    width: 60%;
+}
+
+.comment .show-rating .overall-rating-point{
+    display: flex;
+}
+
+.comment .show-rating .rating-result{
+    text-align: center;
+    padding: 1rem 5rem;
+    margin-right: 2rem;
+    border: 1px solid black;
+    height: fit-content;
+    background-color: #EAFCFE;
+}
+
+.comment .show-rating .rating-result .overall{
+    font-size: 2rem;
+}
+
+.comment .show-rating .rating-result .rating-point{
+    font-size: 4rem;
+    font-weight: bold;
+    margin-top: -2rem;
+    color: rgb(37, 139, 37);
+}
+
+.comment .show-rating .rating-result .rating-number{
+    margin-top: -2rem;
+}
+.comment .show-rating .rating-star{
+    width: 11rem;
+}
+
+.comment .show-rating .rating-star p{
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.comment .show-rating .rating-star .fa-star{
+    font-size: 16px;
+}
+
+.comment .show-rating .rating-star .checked{
+    color: orange;
+}
+
+.comment .show-rating .cmt-content{
+    margin-top: 5rem;
+}
+
+.comment .show-rating .cmt-content .load-more{
+    font-weight: bold;
+    font-size: 16px;
+    opacity: .8;
+    margin-top: -2rem;
+    margin-left: 0.5rem;
+}
+
+.comment .show-rating .cmt-content .load-more:hover{
+    cursor: pointer;
+    opacity: 1;
+}
+
+.comment .show-rating .cmt-content .user{
+    display: flex;
+    align-items: center;
+}
+
+.comment .show-rating .cmt-content .user .avt{
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50px;
+    margin-right: 1rem;
+}
+
+.comment .show-rating .cmt-content .user .username{
+    font-size: 12px;
+}
+
+.comment .show-rating .cmt-content .user .username p{
+    margin-bottom: -0.2rem;
+    font-weight: bold;
+}
+
+.comment .show-rating .cmt-content .cmt-block{
+    margin-bottom: 3rem;
+}
+
+.comment .show-rating .cmt-content .cmt-block .content{
+    margin-left: 4rem;
+    font-size: 14px;
+}
+
+.comment .cmt-area{
+    width: 40%;
+}
+
+.comment .cmt-area .title{
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.comment .cmt-area .input{
+    display: block;
+    margin-top: 1rem;
+    width: 28rem;
+    padding: 10px;
+    font-size: 16px;
+}
+
+.comment .cmt-area .submit-btn{
+    padding: 5px 20px;
+    margin-top: 1rem;
+    background-color: palegreen;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 50px;
+}
+
+.comment .cmt-area .submit-btn:hover{
+    background-color: rgb(57, 168, 57);
+}
+.cart {
+    width: 30%;
+  height: 30%;
+}
