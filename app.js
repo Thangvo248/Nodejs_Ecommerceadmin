@@ -5,11 +5,11 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 
 const indexRouter = require('./routes/index');
-const usersRouter = require('./routes/users');
-const productsRouter=require('./routes/products/products');
-const addproductRouter=require('./routes/products/addproduct');
-const productDetailRouter=require('./routes/products/productDetail');
-const logoutRouter = require('./routes/user/login');
+const usersRouter = require('./components/users');
+const productsRouter = require('./components/products');
+
+const db =require('./components/conf/db/index');
+
 const app = express();
 
 // view engine setup
@@ -25,11 +25,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/products', productsRouter);
-app.use('/addproduct',addproductRouter);
-app.use('/productDetail', productDetailRouter);
-
-app.use('/logout', logoutRouter);
-
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -46,5 +41,8 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+//db.connect();
+db.connect(); 
 
 module.exports = app;
