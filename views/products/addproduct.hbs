@@ -9,7 +9,7 @@
             </div>
             <div class="row tm-edit-product-row">
               <div class="col-xl-6 col-lg-6 col-md-12">
-                <form action="" class="tm-edit-product-form">
+                <form method="POST" action="/products/add" class="tm-edit-product-form">
                   <div class="form-group mb-3">
                     <label
                       for="name"
@@ -29,6 +29,8 @@
                       >Mô tả</label
                     >
                     <textarea
+                      id="description"
+                      name="description"
                       class="form-control validate"
                       rows="3"
                       required
@@ -36,10 +38,12 @@
                   </div>
                   <div class="form-group mb-3">
                     <label
-                      for="description"
+                      for="detail"
                       >Thông tin chi tiết</label
                     >
                     <textarea
+                      id="detail"
+                      name="detail"
                       class="form-control validate"
                       rows="3"
                       required
@@ -64,24 +68,24 @@
                   <div class="row">
                       <div class="form-group mb-3 col-xs-12 col-sm-6">
                           <label
-                            for="stock"
+                            for="price"
                             >Giá sản phẩm
                           </label>
                           <input
-                            id="stock"
-                            name="stock"
+                            id="price"
+                            name="price"
                             type="text"
                             class="form-control validate"
                           />
                         </div>
                         <div class="form-group mb-3 col-xs-12 col-sm-6">
                           <label
-                            for="stock"
+                            for="inventory"
                             >Số lượng trong kho
                           </label>
                           <input
-                            id="stock"
-                            name="stock"
+                            id="inventory"
+                            name="inventory"
                             type="text"
                             class="form-control validate"
                             required

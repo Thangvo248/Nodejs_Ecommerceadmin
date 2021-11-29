@@ -11,9 +11,16 @@ exports.products= async(req,res)=>{
         .catch(next);
     //res.render('products/products');
 }
-
+//get 
 exports.addproduct= async(req,res)=>{
     res.render('products/addproduct');
+}
+
+//post
+exports.add= async(req,res)=>{
+
+    const product = new Product(res.body);
+    product.save();
 }
 
 exports.productDetail= async(req,res)=>{
