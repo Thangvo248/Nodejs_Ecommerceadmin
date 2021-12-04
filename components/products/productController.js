@@ -1,28 +1,37 @@
-const Product = require('../products/productService');
-const { mutipleMongooseToObject } = require('../util/mongooese');
 
-exports.products= async(req,res)=>{
+const Product = require('../../conf/db/productdb');
+const { mutipleMongooseToObject } = require('../../conf/util/mongooese');
 
-    Product.find({})
-        .then(products=> {
-            res.render('products/products',{ products: mutipleMongooseToObject(products) 
-            });
-        })
-        .catch(next);
-    //res.render('products/products');
+
+class ProductController {
+    //[GET] 
+
+    async products(req, res, ) {
+        res.render('products/products')
+    };
+    //[GET] 
+
+    async addproduct(req,res){
+        res.render('products/addproduct');
+    };
+    //[POST]
+    async add(req,res){
+
+        const product = new Product(req.body);
+    
+        try{
+            const newproduct = await product.save()
+            res.redirect('/products')
+        } catch{
+            res.render('products/addproduct', {
+                errorMessage: 'Error creating product'
+            })
+        }
+    };
+    //[GET]
+    async productDetail(req,res){
+        res.render('products/productDetail');
+    }
 }
-//get 
-exports.addproduct= async(req,res)=>{
-    res.render('products/addproduct');
-}
 
-//post
-exports.add= async(req,res)=>{
-
-    const product = new Product(res.body);
-    product.save();
-}
-
-exports.productDetail= async(req,res)=>{
-    res.render('products/productDetail');
-}
+module.exports = new ProductController();

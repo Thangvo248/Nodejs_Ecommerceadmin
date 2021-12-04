@@ -8,7 +8,7 @@ const indexRouter = require('./routes/index');
 const usersRouter = require('./components/users');
 const productsRouter = require('./components/products');
 
-const db =require('./components/conf/db/index');
+const db =require('./conf/db/index');
 
 const app = express();
 
