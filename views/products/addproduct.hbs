@@ -9,7 +9,7 @@
         </div>
         <div class="row tm-edit-product-row">
           <div class="col-xl-6 col-lg-6 col-md-12">
-            <form method="POST" action="/products/add" class="tm-edit-product-form">
+            <form method="POST" action="/products/add" enctype="multipart/form-data" class="tm-edit-product-form">
               <div class="form-group mb-3">
                 <label for="name">Tên sản phẩm</label>
                 <input id="name" name="name" type="text" class="form-control validate" required />
@@ -46,21 +46,14 @@
               </div>
 
           </div>
-         <!-- <div class="col-xl-6 col-lg-6 col-md-12 mx-auto mb-4">
-            <div class="tm-product-img-dummy mx-auto">
-              <i class="fas fa-cloud-upload-alt tm-upload-icon"
-                onclick="document.getElementById('fileInput').click();"></i>
-            </div>
+          <div class="col-xl-6 col-lg-6 col-md-12 mx-auto mb-4">
             <div class="custom-file mt-3 mb-3">
-              <input id="fileInput" type="file" style="display:none;" />
-              <input type="button" class="btn btn-primary btn-block mx-auto" value="Tải ảnh sản phẩm lên"
-                onclick="document.getElementById('fileInput').click();" />
+              <input type="file" class="btn btn-primary btn-block mx-auto" value="Tải ảnh sản phẩm lên" name="image_url"/>
             </div>
-          </div>-->
+          </div>
           <div class="col-12">
-            <a href="""> 
+            <a href=""> 
               <button type="submit" class="btn btn-primary btn-block text-uppercase">Thêm sản phẩm</button>
-
             </a>
           </div>
           </form>

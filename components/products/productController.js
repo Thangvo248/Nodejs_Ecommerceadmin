@@ -1,12 +1,13 @@
 
 const Product = require('../../conf/db/productdb');
 const { mutipleMongooseToObject } = require('../../conf/util/mongooese');
-
+const cloudinary = require('../../conf/util/cloudinary');
+const upload = require("../../conf/util/multer")
 
 class ProductController {
     //[GET] 
 
-    async products(req, res, ) {
+    async products(req, res) {
         res.render('products/products')
     };
     //[GET] 
@@ -16,10 +17,12 @@ class ProductController {
     };
     //[POST]
     async add(req,res){
-
-        const product = new Product(req.body);
-    
+        
+        const result = await cloudinary.uploader.upload(req.file.path);
         try{
+            const formData = req.body;
+            formData.image_url= result.secure_url;
+            const product = new Product(formData);
             const newproduct = await product.save()
             res.redirect('/products')
         } catch{

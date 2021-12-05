@@ -12,7 +12,7 @@ const Product = new Schema({
     //product_type: {type: String},
     price: {type: String},
     inventory: {type: String},
-    //image_url: {type: String},
+    image_url: {type: String},
     slug: { type: String, slug: ["name", "description"]},
     createAt: {type: Date, default: Date.now},
     updateAt: {type: Date, default: Date.now},
