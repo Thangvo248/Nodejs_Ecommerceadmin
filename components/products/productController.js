@@ -1,4 +1,3 @@
-
 const Product = require('./productModel');
 const { mutipleMongooseToObject } = require('../../conf/util/mongooese');
 const cloudinary = require('../../conf/util/cloudinary');
