@@ -9,5 +9,5 @@ exports.register= async(req,res)=>{
 }
 
 exports.profile= async(req,res)=>{
-    res.render('users/profile');
+    res.render('users/accounts');
 }

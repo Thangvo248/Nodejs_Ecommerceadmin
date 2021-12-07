@@ -1,5 +1,5 @@
 
-const Product = require('../../conf/db/productdb');
+const Product = require('./productModel');
 const { mutipleMongooseToObject } = require('../../conf/util/mongooese');
 const cloudinary = require('../../conf/util/cloudinary');
 const upload = require("../../conf/util/multer")
