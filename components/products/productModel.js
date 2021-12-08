@@ -12,6 +12,7 @@
         product_type: {type: String},
         color:{type: String},
         price: {type: String},
+        sold: {type: String},
         inventory: {type: String},
         image_url: {type: String},
         slug: { type: String, slug: ["name", "description"]},

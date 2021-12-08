@@ -15,150 +15,20 @@
                   </tr>
                 </thead>
                 <tbody>
+                  {{#each products}}
                   <tr>
                     <th scope="row"><input type="checkbox" /></th>
-                    <td class="tm-product-name">Laptop acer</td>
-                    <td>1,450</td>
-                    <td>550</td>
-                    <td>28 05 2020</td>
+                    <td class="tm-product-name">{{this.name}}</td>
+                    <td>0</td>
+                    <td>{{this.inventory}}</td>
+                    <td>{{this.updateAt}}</td>
                     <td>
-                      <a href="productDetail" class="tm-product-delete-link">
+                      <a href="#" class="tm-product-delete-link">
                         <i class="far fa-trash-alt tm-product-delete-icon"></i>
                       </a>
                     </td>
                   </tr>
-                  <tr>
-                    <th scope="row"><input type="checkbox" /></th>
-                    <td class="tm-product-name">Iphone 13</td>
-                    <td>1,250</td>
-                    <td>750</td>
-                    <td>21 05 2021</td>
-                    <td>
-                      <a href="productDetail" class="tm-product-delete-link">
-                        <i class="far fa-trash-alt tm-product-delete-icon"></i>
-                      </a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row"><input type="checkbox" /></th>
-                    <td class="tm-product-name">Chuột không dây</td>
-                    <td>1,100</td>
-                    <td>900</td>
-                    <td>18 05 2021</td>
-                    <td>
-                      <a href="productDetail" class="tm-product-delete-link">
-                        <i class="far fa-trash-alt tm-product-delete-icon"></i>
-                      </a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row"><input type="checkbox" /></th>
-                    <td class="tm-product-name">Laptop acer</td>
-                    <td>1,450</td>
-                    <td>550</td>
-                    <td>28 05 2020</td>
-                    <td>
-                      <a href="productDetail" class="tm-product-delete-link">
-                        <i class="far fa-trash-alt tm-product-delete-icon"></i>
-                      </a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row"><input type="checkbox" /></th>
-                    <td class="tm-product-name">Iphone 13</td>
-                    <td>1,250</td>
-                    <td>750</td>
-                    <td>21 05 2021</td>
-                    <td>
-                      <a href="productDetail" class="tm-product-delete-link">
-                        <i class="far fa-trash-alt tm-product-delete-icon"></i>
-                      </a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row"><input type="checkbox" /></th>
-                    <td class="tm-product-name">Chuột không dây</td>
-                    <td>1,100</td>
-                    <td>900</td>
-                    <td>18 05 2021</td>
-                    <td>
-                      <a href="productDetail" class="tm-product-delete-link">
-                        <i class="far fa-trash-alt tm-product-delete-icon"></i>
-                      </a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row"><input type="checkbox" /></th>
-                    <td class="tm-product-name">Laptop acer</td>
-                    <td>1,450</td>
-                    <td>550</td>
-                    <td>28 05 2020</td>
-                    <td>
-                      <a href="productDetail" class="tm-product-delete-link">
-                        <i class="far fa-trash-alt tm-product-delete-icon"></i>
-                      </a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row"><input type="checkbox" /></th>
-                    <td class="tm-product-name">Iphone 13</td>
-                    <td>1,250</td>
-                    <td>750</td>
-                    <td>21 05 2021</td>
-                    <td>
-                      <a href="productDetail" class="tm-product-delete-link">
-                        <i class="far fa-trash-alt tm-product-delete-icon"></i>
-                      </a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row"><input type="checkbox" /></th>
-                    <td class="tm-product-name">Chuột không dây</td>
-                    <td>1,100</td>
-                    <td>900</td>
-                    <td>18 05 2021</td>
-                    <td>
-                      <a href="productDetail" class="tm-product-delete-link">
-                        <i class="far fa-trash-alt tm-product-delete-icon"></i>
-                      </a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row"><input type="checkbox" /></th>
-                    <td class="tm-product-name">Laptop acer</td>
-                    <td>1,450</td>
-                    <td>550</td>
-                    <td>28 05 2020</td>
-                    <td>
-                      <a href="productDetail" class="tm-product-delete-link">
-                        <i class="far fa-trash-alt tm-product-delete-icon"></i>
-                      </a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row"><input type="checkbox" /></th>
-                    <td class="tm-product-name">Iphone 13</td>
-                    <td>1,250</td>
-                    <td>750</td>
-                    <td>21 05 2021</td>
-                    <td>
-                      <a href="productDetail" class="tm-product-delete-link">
-                        <i class="far fa-trash-alt tm-product-delete-icon"></i>
-                      </a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row"><input type="checkbox" /></th>
-                    <td class="tm-product-name">Chuột không dây</td>
-                    <td>1,100</td>
-                    <td>900</td>
-                    <td>18 05 2021</td>
-                    <td>
-                      <a href="productDetail" class="tm-product-delete-link">
-                        <i class="far fa-trash-alt tm-product-delete-icon"></i>
-                      </a>
-                    </td>
-                  </tr>
+                  {{/each}}
                 </tbody>
               </table>
             </div>

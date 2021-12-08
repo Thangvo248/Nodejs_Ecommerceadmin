@@ -6,8 +6,14 @@ const upload = require("../../conf/util/multer")
 class ProductController {
     //[GET] 
 
-    async products(req, res) {
-        res.render('products/products')
+    async products(req, res, next) {
+        const products = await Product.find({})
+            .then(products =>{
+                res.render('products/products', {
+                    products: mutipleMongooseToObject(products)
+                });
+            }) 
+            .catch(next);
     };
     //[GET] 
 
