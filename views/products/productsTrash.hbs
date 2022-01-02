@@ -23,21 +23,26 @@
                 <td>{{this.inventory}}</td>
                 <td>{{this.updateAt}}</td>
                 <td>
-                  <a href="#" class="tm-product-delete-link" data-id="{{this._id}}" data-toggle="modal"
-                    id="btn-delete-product" data-target="#delete-products">
+                  <a class="tm-product-delete-link" data-toggle="modal" data-id="{{this._id}}"
+                    data-target="#delete-products">
                     <i class="far fa-trash-alt tm-product-delete-icon"></i>
                   </a>
+                </td>
+              </tr>
+              {{else}}
+              <tr>
+                <td colspan="5" class="text-center">
+                  Thung rac trong.
                 </td>
               </tr>
               {{/each}}
             </tbody>
           </table>
         </div>
-        <!-- table container -->
-        <a href="products/addproduct" class="btn btn-primary btn-block text-uppercase mb-3">Thêm sản phẩm</a>
-        <button class="btn btn-primary btn-block text-uppercase" data-toggle="modal" data-target="#delete-products">
+        <!-- table container 
+        <button class="btn btn-primary btn-block text-uppercase" data-toggle="modal" data-id="{{this._id}}" data-target="#delete-products">
           Xóa sản phẩm đã chọn
-        </button>
+        </button>-->
         <!-- Modal confirm delete-products -->
         <div class="modal fade" id="delete-products">
           <div class="modal-dialog">
@@ -52,8 +57,8 @@
                 Bạn muốn xóa sản phẩm này ?
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-primary">Xóa</button>
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Hủy</button>
+                <button id="btn-delete-product" type="button" class="btn btn-primary">Xóa</button>
+                <button  type="button" class="btn btn-danger" data-dismiss="modal">Hủy</button>
               </div>
             </div>
           </div>
@@ -64,7 +69,7 @@
     </div>
     <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4 tm-block-col">
       <div class="tm-bg-primary-dark tm-block tm-block-product-categories">
-        <h2 class="tm-block-title">Phân loại sản phẩm</h2>
+        <h2 class="tm-block-title">Loại sản phẩm</h2>
         <div class="tm-product-table-container">
           <table class="table tm-table-small tm-product-table">
             <tbody>
@@ -88,32 +93,34 @@
           </table>
         </div>
         <!-- table container -->
-        <button class="btn btn-primary btn-block text-uppercase mb-3">
-          Thêm loại phẩm mới
-        </button>
-        <div>
-          <a href="products/productsTrash">
-            <button class="btn btn-primary btn-block text-uppercase mb-3">
-              Thung rac
-            </button>
-          </a>
-        </div>
       </div>
     </div>
   </div>
 </div>
-
+<form name="delete-product-form" method="POST"></form>
 <script>
   document.addEventListener('DOMContentLoaded', function () {
+    var productId;
+    var deleteForm = document.forms['delete-product-form'];
+    var btnDeleteProduct = document.getElementById('btn-delete-product');
 
-
+    //when dialog confirm clicked
     $('#delete-products').on('show.bs.modal', function (event) {
       var button = $(event.relatedTarget);
-      var id = button.data('id');
+      productId = button.data('id');
 
     });
-
-    var btnDeleleProduct = document.getElementById('btn-delete-product')
-
-  })
+    //When delete product btn clicked
+    btnDeleteProduct.onclick = function () {
+      deleteForm.action = '/products/' + productId + '?_method=DELETE';
+      deleteForm.submit();
+    }
+    //Restore btn clicked 
+    /* restoreBtn.click(function (e) {
+       e.preventDefault();
+ 
+       var id = $(this).data('id');
+     })
+ */
+  });
 </script>
