@@ -1,4 +1,5 @@
 const Product = require('./productModel');
+const ProductType = require('./productTypeModel');
 const { mutipleMongooseToObject } = require('../../conf/util/mongooese');
 const cloudinary = require('../../conf/util/cloudinary');
 const upload = require("../../conf/util/multer")
@@ -7,18 +8,27 @@ class ProductController {
     //[GET] 
 
     async products(req, res, next) {
-        const products = await Product.find({})
-            .then((products) => {
-                res.render('products/products', {
-                    products: mutipleMongooseToObject(products)
-                });
-            })
-            .catch(next);
+        try{
+            const products = await Product.find({})
+            const productTypes = await ProductType.find({})
+            res.render('products/products', {
+                products: mutipleMongooseToObject(products),
+                productTypes: mutipleMongooseToObject(productTypes)
+            });
+        } catch{
+            res.redirect('/products')
+        }
     };
     //[GET]     
 
     async addproduct(req, res) {
-        res.render('products/addproduct');
+        const products = await Product.find({})
+            .then((products) => {
+                res.render('products/addproduct', {
+                    products: mutipleMongooseToObject(products)
+                });
+            })
+            .catch(next);
     };
     //[POST]
     async add(req, res) {
@@ -71,6 +81,28 @@ class ProductController {
         .catch(next);
     }
     
+    /* productType*/
+    async addproductType(req, res) {
+        const productTypes = await ProductType.find({})
+            .then((productTypes) => {
+                res.render('products/addproductType', {
+                    productTypes: mutipleMongooseToObject(productTypes)
+                });
+            })
+            .catch(next);
+    };
+    async submitproductType(req, res) {
+
+        try {
+            const productType = new ProductType(req.body);
+            const newproductType = await productType.save()
+            res.redirect('/products')
+        } catch {
+            res.render('products/addproduct', {
+                errorMessage: 'Error creating product'
+            })
+        }
+    };
 }
 
 module.exports = new ProductController();
