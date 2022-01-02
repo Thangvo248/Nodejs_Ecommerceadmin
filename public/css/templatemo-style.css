@@ -707,3 +707,8 @@ input[type="checkbox"]:focus {
     max-height: 350px;
   }
 }
+
+.fixed-td {
+  table-layout: fixed;
+  width: 10%;
+}

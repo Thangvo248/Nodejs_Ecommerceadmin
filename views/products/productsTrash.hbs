@@ -1,17 +1,20 @@
 <div class="container mt-5">
   <div class="row tm-content-row">
-    <div class="col-sm-12 col-md-12 col-lg-8 col-xl-8 tm-block-col">
+    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 tm-block-col">
       <div class="tm-bg-primary-dark tm-block tm-block-products">
+        <h3 style="color:coral">Danh sach san pham xoa bo</h3>
         <div class="tm-product-table-container">
           <table class="table table-hover tm-table-small tm-product-table">
             <thead>
               <tr>
                 <th scope="col">&nbsp;</th>
-                <th scope="col">Tên sản phẩm</th>
+                <th scope="col" style="width:10%">Tên sản phẩm</th>
                 <th scope="col">Đã bán</th>
                 <th scope="col">Tồn kho</th>
                 <th scope="col">Ngày nhập</th>
-                <th scope="col">&nbsp;</th>
+                <th scope="col">&nbsp; </th>
+                <th scope="col">&nbsp; </th>
+
               </tr>
             </thead>
             <tbody>
@@ -20,9 +23,13 @@
                 <th scope="row"><input type="checkbox" /></th>
                 <td class="tm-product-name">{{this.name}}</td>
                 <td>0</td>
-                <td>{{this.inventory}}</td>
+                <td class="fixed-td">{{this.inventory}}</td>
                 <td>{{this.updateAt}}</td>
                 <td>
+                  <a class="btn-restore tm-product-delete-link " data-id="{{this._id}}">
+                    <i class="fas fa-undo-alt tm-product-delete-icon"></i>
+                  </a>
+                  </td><td>
                   <a class="tm-product-delete-link" data-toggle="modal" data-id="{{this._id}}"
                     data-target="#delete-products">
                     <i class="far fa-trash-alt tm-product-delete-icon"></i>
@@ -58,7 +65,7 @@
               </div>
               <div class="modal-footer">
                 <button id="btn-delete-product" type="button" class="btn btn-primary">Xóa</button>
-                <button  type="button" class="btn btn-danger" data-dismiss="modal">Hủy</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Hủy</button>
               </div>
             </div>
           </div>
@@ -97,13 +104,17 @@
     </div>
   </div>
 </div>
+
 <form name="delete-product-form" method="POST"></form>
+<form name="restore-product-form" method="POST"></form>
+
 <script>
   document.addEventListener('DOMContentLoaded', function () {
-    var productId;
     var deleteForm = document.forms['delete-product-form'];
+    var restoreForm = document.forms['restore-product-form'];
+    var productId;
     var btnDeleteProduct = document.getElementById('btn-delete-product');
-
+    var restoreBtn = $('.btn-restore');
     //when dialog confirm clicked
     $('#delete-products').on('show.bs.modal', function (event) {
       var button = $(event.relatedTarget);
@@ -112,15 +123,15 @@
     });
     //When delete product btn clicked
     btnDeleteProduct.onclick = function () {
-      deleteForm.action = '/products/' + productId + '?_method=DELETE';
-      deleteForm.submit();
+      deleteForm.action = '/products/' + productId + '/delete?_method=DELETE';
+      deleteF; orm.submit();
     }
     //Restore btn clicked 
-    /* restoreBtn.click(function (e) {
-       e.preventDefault();
- 
-       var id = $(this).data('id');
-     })
- */
+    restoreBtn.click(function (e) {
+      e.preventDefault();
+      productId = $(this).data('id');
+      deleteForm.action = '/products/' + productId + '/restore?_method=PATCH';
+      deleteForm.submit();
+    });
   });
 </script>

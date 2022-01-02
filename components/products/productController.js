@@ -8,14 +8,14 @@ class ProductController {
 
     async products(req, res, next) {
         const products = await Product.find({})
-            .then(products => {
+            .then((products) => {
                 res.render('products/products', {
                     products: mutipleMongooseToObject(products)
                 });
             })
             .catch(next);
     };
-    //[GET] 
+    //[GET]     
 
     async addproduct(req, res) {
         res.render('products/addproduct');
@@ -39,16 +39,25 @@ class ProductController {
     //[GET]
     async productDetail(req, res) {
         res.render('products/productDetail');
-    }
-    //delete 
+    };
+
+    /* Delete & Trash*/
+    //delete trash
     async deleteproduct(req, res, next) {
         const products = await Product.deleteOne({ _id: req.params.id })
             .then(() => res.redirect('back'))
             .catch(next);
-    }
+    };
+    //delete soft
+    async deletesoftproduct(req, res, next) {
+        const products = await Product.delete({ _id: req.params.id })
+            .then(() => res.redirect('back'))
+            .catch(next);
+    };
+    //load products in trash
     async trash(req, res, next) {
         const products = await Product.findDeleted({})
-            .then(products => {
+            .then((products) => {
                 res.render('products/productsTrash', {
                     products: mutipleMongooseToObject(products)
                 });
