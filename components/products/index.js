@@ -1,8 +1,6 @@
 var express = require('express');
 var router = express.Router();
 const upload = require("../../conf/util/multer");
-const productController = require('./productController');
-
 const ProductController = require('./productController');
 
 
@@ -15,7 +13,7 @@ router.get('/', ProductController.products);
 router.delete('/:id', ProductController.deletesoftproduct);
 router.delete('/:id/delete', ProductController.deleteproduct);
 router.get('/productsTrash', ProductController.trash);
-router.patch('/:id/restore',productController.restore);
+router.patch('/:id/restore',ProductController.restore);
 
 //productType
 router.get('/addproductType', ProductController.addproductType);

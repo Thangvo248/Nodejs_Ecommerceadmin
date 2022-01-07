@@ -1,5 +1,7 @@
 const Product = require('./productModel');
 const ProductType = require('./productTypeModel');
+const ProductColor = require('./productColorModel');
+
 const { mutipleMongooseToObject } = require('../../conf/util/mongooese');
 const cloudinary = require('../../conf/util/cloudinary');
 const upload = require("../../conf/util/multer")
@@ -8,27 +10,30 @@ class ProductController {
     //[GET] 
 
     async products(req, res, next) {
-        try{
+        try {
             const products = await Product.find({})
             const productTypes = await ProductType.find({})
             res.render('products/products', {
                 products: mutipleMongooseToObject(products),
                 productTypes: mutipleMongooseToObject(productTypes)
             });
-        } catch{
+        } catch {
             res.redirect('/products')
         }
     };
     //[GET]     
 
-    async addproduct(req, res) {
-        const products = await Product.find({})
-            .then((products) => {
-                res.render('products/addproduct', {
-                    products: mutipleMongooseToObject(products)
-                });
-            })
-            .catch(next);
+    async addproduct(req, res, next) {
+        try {
+            const ProductTypes = await ProductType.find({})
+            const ProductColors = await ProductColor.find({})
+            res.render('products/addproduct', {
+                ProductTypes: mutipleMongooseToObject(ProductTypes),
+                ProductColors: mutipleMongooseToObject(ProductColors)
+            });
+        } catch {
+            res.redirect('/products')
+        }
     };
     //[POST]
     async add(req, res) {
@@ -75,12 +80,12 @@ class ProductController {
             .catch(next);
     };
     //[PATCH] restore
-    async restore(req, res, next){
-        const products = await Product.restore({_id: req.params.id})
-        .then(() =>res.redirect('back'))
-        .catch(next);
+    async restore(req, res, next) {
+        const products = await Product.restore({ _id: req.params.id })
+            .then(() => res.redirect('back'))
+            .catch(next);
     }
-    
+
     /* productType*/
     async addproductType(req, res) {
         const productTypes = await ProductType.find({})
