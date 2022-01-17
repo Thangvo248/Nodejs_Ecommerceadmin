@@ -11,7 +11,7 @@ const Product = new Schema({
     detail: { type: String },
     product_type: { type: String },
     color: { type: String },
-    price: { type: String },
+    price: { type: Number },
     sold: { type: String },
     inventory: { type: String },
     image_url: { type: String },

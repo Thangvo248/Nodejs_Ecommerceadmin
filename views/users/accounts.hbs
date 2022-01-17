@@ -2,15 +2,31 @@
   <div class="row tm-content-row">
     <div class="col-12 tm-block-col">
       <div class="tm-bg-primary-dark tm-block tm-block-h-auto">
-        <h2 class="tm-block-title">List of Accounts</h2>
-        <p class="text-white">Accounts</p>
+        <h2 class="tm-block-title">Danh sách tài khoản</h2>
+        <p class="text-white">Loại tài khoản</p>
         <select class="custom-select">
-          <option value="0">Select account</option>
+          <option value="0">Chọn loại tài khoản</option>
           <option value="1">Admin</option>
           <option value="2">Editor</option>
           <option value="3">Merchant</option>
           <option value="4">Customer</option>
         </select>
+         <div class="tm-product-table-container">
+          <table class="table tm-table-small tm-product-table">
+            {{#each productTypes}}
+            <tbody>
+              <tr>
+                <td class="tm-product-name">{{this.name }}</td>
+                <td class="text-center">
+                  <a href="productDetail" class="tm-product-delete-link">
+                    <i class="far fa-trash-alt tm-product-delete-icon"></i>
+                  </a>
+                </td>
+              </tr>
+            </tbody>
+            {{/each}}
+          </table>
+        </div>
       </div>
     </div>
   </div>

@@ -2,13 +2,33 @@
   <div class="row tm-content-row">
     <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 tm-block-col">
       <div class="tm-bg-primary-dark tm-block tm-block-products">
-        <h2 class="tm-block-title">Danh sach sản phẩm</h2>
+        <div class="row">
+          <h2 class="tm-block-title">Danh sach sản phẩm</h2>
+          <div class="col-md-4">
+            <input type="search" placeholder="Tìm kiếm..." id="query">
+            <button class="icon" id="findProdducts"
+              onclick="location.href='/products?q='+document.getElementById('query').value"><i
+                class="fa fa-search"></i></button>
+          </div>
+           <span class=" price_product col-md-2">
+                <select class="form-select" aria-label="Default select example" onchange="location.href='/products?producttype='+this.options[this.selectedIndex].value">
+                {{#if product_type}}
+                <option value="{{product_type}}" selected hidden>{{product_type}}</option>
+                {{/if}}
+                <option value="">--Loại sản phẩm--</option>
+                {{#each productTypes}}
+                <option value="{{this.name}}">{{this.name}}</option>
+                {{/each}}
+                </select>
+              </span>
+        </div>
         <div class="tm-product-table-container">
           <table class="table table-hover tm-table-small tm-product-table">
             <thead>
               <tr>
                 <th scope="col">&nbsp;</th>
                 <th scope="col">Tên sản phẩm</th>
+                <th scope="col">Loại sản phẩm</th>
                 <th scope="col">Đã bán</th>
                 <th scope="col">Tồn kho</th>
                 <th scope="col">Ngày nhập</th>
@@ -20,7 +40,12 @@
               <tr>
                 <th scope="row"><input type="checkbox" /></th>
                 <td class="tm-product-name">{{this.name}}</td>
+                <td class="tm-product-name">{{this.product_type}}</td>
+                {{#if this.sold}}
+                <td>{{this.sold}}</td>
+                {{else}}
                 <td>0</td>
+                {{/if}}
                 <td>{{this.inventory}}</td>
                 <td>{{this.updateAt}}</td>
                 <td>
@@ -39,6 +64,71 @@
               {{/each}}
             </tbody>
           </table>
+        </div>
+         <div div="row">
+                {{#if q}}
+                <ul class="pagination justify-content-center">
+                    {{#if haspreviouspage}}
+                        <li class="page-item">
+                            <a class="page-link" href="/products?page={{previouspage}}&q={{q}}" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                            <span class="sr-only">Previous</span>
+                            </a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="/products?page={{previouspage}}&q={{q}}">{{previouspage}}</a>
+                        </li>
+                    {{/if}}
+
+                    <li class="page-item active">
+                        <a class="page-link" href="javascript:void(0)" tabindex="-1">{{currentpage}}</a>
+                    </li>
+
+                    {{#if hasnextpage}}
+                        
+                        <li class="page-item">
+                            <a class="page-link" href="/products?page={{nextpage}}&q={{q}}">{{nextpage}}</a>
+                        </li>
+                       <li class="page-item">
+                            <a class="page-link" href="/products?page={{nextpage}}&q={{q}}" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                            <span class="sr-only">Next</span>
+                            </a>
+                        </li>
+                    {{/if}}
+                </ul>
+                {{else}}
+                <ul class="pagination justify-content-center">
+                    {{#if haspreviouspage}}
+                        <li class="page-item">
+                            <a class="page-link" href="/products?page={{previouspage}}" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                            <span class="sr-only">Previous</span>
+                            </a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="/products?page={{previouspage}}">{{previouspage}}</a>
+                        </li>
+                    {{/if}}
+
+                    <li class="page-item active">
+                        <a class="page-link" href="javascript:void(0)" tabindex="-1">{{currentpage}}</a>
+                    </li>
+
+                    {{#if hasnextpage}}
+                        
+                        <li class="page-item">
+                            <a class="page-link" href="/products?page={{nextpage}}">{{nextpage}}</a>
+                        </li>
+                       <li class="page-item">
+                            <a class="page-link" href="/products?page={{nextpage}}" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                            <span class="sr-only">Next</span>
+                            </a>
+                        </li>
+                    {{/if}}
+                </ul>
+                {{/if}}
         </div>
         <!-- table container -->
         <a href="products/addproduct" class="btn btn-primary btn-block text-uppercase mb-3">Thêm sản phẩm</a>

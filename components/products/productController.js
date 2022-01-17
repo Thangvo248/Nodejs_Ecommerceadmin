@@ -1,21 +1,41 @@
 const Product = require('./productModel');
 const ProductType = require('./productTypeModel');
 const ProductColor = require('./productColorModel');
+const productservice=require('./productService');
 
 const { mutipleMongooseToObject } = require('../../conf/util/mongooese');
 const cloudinary = require('../../conf/util/cloudinary');
 const upload = require("../../conf/util/multer")
+const ITEM_PRODUCTS_PER_PAGE=12;
 
 class ProductController {
     //[GET] 
 
     async products(req, res, next) {
         try {
-            const products = await Product.find({})
+            const page=req.query.page||1;
+            const q= req.query.q;
+            const producttype=req.query.producttype;
+            const filter={};
+            if(q)
+            filter.name= RegExp(q,'i');
+            if(producttype)
+            filter.product_type=producttype;
+            const totalProduct=await Product.count(filter);
+            const products = await productservice.list(filter,ITEM_PRODUCTS_PER_PAGE,page-1);
             const productTypes = await ProductType.find({})
             res.render('products/products', {
                 products: mutipleMongooseToObject(products),
-                productTypes: mutipleMongooseToObject(productTypes)
+                productTypes: mutipleMongooseToObject(productTypes),
+                hasnextpage: ITEM_PRODUCTS_PER_PAGE*page<totalProduct,
+                haspreviouspage: page>1,
+                nextpage:page+1,
+                previouspage:page-1,
+                ITEM_PRODUCT_PER_PAGE: ITEM_PRODUCTS_PER_PAGE,
+                currentpage:page,
+                lastpage: Math.ceil(totalProduct / ITEM_PRODUCTS_PER_PAGE),
+                q:q,
+                product_type:producttype
             });
         } catch {
             res.redirect('/products')
