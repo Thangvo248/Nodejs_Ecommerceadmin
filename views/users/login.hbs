@@ -4,29 +4,27 @@
       <div class="tm-bg-primary-dark tm-block tm-block-h-auto">
         <div class="row">
           <div class="col-12 text-center">
-            <h2 class="tm-block-title mb-4">Chao mungg ban den voi trang dang nhap</h2>
+            <h2 class="tm-block-title mb-4">Chào mừng bạn đến với trang đăng nhập</h2>
           </div>
         </div>
         <div class="row mt-2">
           <div class="col-12">
-            <form action="index.html" method="post" class="tm-login-form">
+            <form action="/users/submitLogin" method="post" class="tm-login-form">
               <div class="form-group">
-                <label for="username">Tai Khoan</label>
-                <input name="username" type="text" class="form-control validate" id="username" value="" required />
+                <label for="username">Tài khoản</label>
+                <input name="email" type="text" class="form-control validate" id="username" value="" required />
               </div>
               <div class="form-group mt-3">
-                <label for="password">Mat khau</label>
+                <label for="password">Mật khẩu</label>
                 <input name="password" type="password" class="form-control validate" id="password" value="" required />
               </div>
               <div class="form-group mt-4">
-                <a href="/users">
                   <button type="submit" class="btn btn-primary btn-block text-uppercase">
-                  Dang nhap
+                  Đăng nhập
                 </button>
-                </a>
               </div>
               <button class="mt-5 btn btn-primary btn-block text-uppercase">
-                Quen mat khau ?
+                Quên mật khẩu ?
               </button>
             </form>
           </div>
